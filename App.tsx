@@ -8,13 +8,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { PaperProvider } from 'react-native-paper';
-import AppNavigator from './src/components/navigations/AppNavigator';
+// import AppNavigator from './src/components/navigations/AppNavigator';
+import BottomBar from './src/components/navigations/BottomBar';
 
 function App(): React.JSX.Element {
   return (
     <NavigationContainer>
       <PaperProvider>
-        <AppNavigator />
+        <BottomBar />
       </PaperProvider>
     </NavigationContainer>
   );

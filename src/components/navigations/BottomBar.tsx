@@ -10,7 +10,6 @@ import {
   UserIcon,
 } from 'lucide-react-native';
 import Scan from '../../screens/Scan';
-import { useNavigation } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,8 +21,6 @@ const navigations = [
 ];
 
 export default function BottomBar() {
-  const navigation = useNavigation();
-
   return (
     <Tab.Navigator
       screenOptions={{
@@ -32,38 +29,11 @@ export default function BottomBar() {
         tabBarInactiveTintColor: 'gray',
       }}>
       {navigations.map((item, index) => {
-        if (item.name === 'Scan') {
-          return (
-            <Tab.Screen
-              key={index}
-              name={item.name}
-              component={undefined as any}
-              listeners={{
-                tabPress: e => {
-                  e.preventDefault();
-                  navigation.navigate(item.name as never);
-                },
-              }}
-              options={{
-                tabBarLabel: item.label,
-                tabBarIcon: () => <item.icon size={24} />,
-              }}
-            />
-          );
-        }
         return (
           <Tab.Screen
             key={index}
             name={item.name}
             component={item.component}
-            listeners={{
-              tabPress: e => {
-                if (item.name === 'Scan') {
-                  e.preventDefault();
-                  navigation.navigate(item.name as never);
-                }
-              },
-            }}
             options={{
               tabBarLabel: item.label,
               tabBarIcon: () => <item.icon size={24} />,
